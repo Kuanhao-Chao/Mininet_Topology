@@ -1,0 +1,5 @@
+s1 s2 s3 s4 ss1 ss2 ss3 ss4 ss5 sss1 sss2 sss3 sss4 sh1 sh2 ssh1 ssh2 ssh3 sssh4
+s1 s2 100
+s1 s2 200
+s1 s3 100
+s1 ss2 100
