@@ -10,14 +10,14 @@ from mininet.link import TCLink, Intf
 from subprocess import call
 import csv
 
-with open('connection_100_v2.csv', 'rb') as csvfile:
+with open('topology_data/connection_100_v2.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',')
     for row in spamreader:
         print ', '.join(row)
 
 # def parse_file():
 line_list = []
-with open('connection_100_v2.csv') as f:
+with open('topology_data/connection_100_v2.csv') as f:
     for each_line in f: 
         if each_line[0] == '#':
             print(each_line)
@@ -49,13 +49,13 @@ def runNet():
         switch_node_list.append(s)
         print("s"+i[0])
 #         step = 0
-        if(int(i[0]) >= bottom_start_id):
-            info( '*** Add hosts\n')
-            h = net.addHost("h"+i[0]+str(1), cls=Host, defaultRoute=None, ip='10.0.0.'+i[0])
-            host_node_list.append(h)
-            print("h"+i[0]+str(1))
+#        if(int(i[0]) >= bottom_start_id):
+#            info( '*** Add hosts\n')
+#            h = net.addHost("h"+i[0]+str(1), cls=Host, defaultRoute=None, ip='10.0.0.'+i[0])
+#            host_node_list.append(h)
+#            print("h"+i[0]+str(1))
     print('Length of switch_node_list', len(switch_node_list))
-    print('Length of host_node_list', len(host_node_list))
+#    print('Length of host_node_list', len(host_node_list))
 
 #     host_node_list = [[0 for i in range(3)] for j in range(bottom_start_id, switch_num+1)]
 #     for i in line_list[bottom_start_id:switch_num+1]:
@@ -72,9 +72,9 @@ def runNet():
         net.addLink(switch_node_list[int(i[0])], switch_node_list[int(i[1])])
         print("s"+str(int(i[0])), "s"+str(int(i[1])))
         
-    for i, element in enumerate(line_list[bottom_start_id+1:switch_num+1]):
-        net.addLink(switch_node_list[int(element[0])], host_node_list[i])
-        print("s"+element[0], "h"+ str(i+20))
+#    for i, element in enumerate(line_list[bottom_start_id+1:switch_num+1]):
+#        net.addLink(switch_node_list[int(element[0])], host_node_list[i])
+#        print("s"+element[0], "h"+ str(i+20))
 
     info( '*** Starting network\n')
     net.build()
