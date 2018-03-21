@@ -1,6 +1,6 @@
 # 這裡會放一些註解(參數等等）
 # 註解可能會超過一行
-# 最底層的開始ID,host數量,bandwidth
+# 最底層的開始ID,總共的switch個數,bandwidth
 2000,4,100
 # NodeID,x_pos,y_pos,degree
 0,10,20,5
