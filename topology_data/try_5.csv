@@ -1,0 +1,20 @@
+# Connection parameters. Layer11:750 Layer12: 70 Layer22: 2500
+# Connection Num. Layer11: 20 Layer12: 53 Layer22: 349
+# Lowest level starting ID, total switch number, bandwidth
+3,7,100
+# NodeID, x_pos, y_pos, degree
+0,12129,3110,7
+1,7249,1856,8
+2,-7356,4040,5
+3,-12225,3747,10
+4,-4314,-2254,6
+5,10648,-610,3
+6,13942,3542,7
+# links
+0,1
+1,2
+0,3
+1,4
+2,5
+2,6
+c
