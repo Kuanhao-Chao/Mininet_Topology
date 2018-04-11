@@ -10,14 +10,14 @@ from mininet.link import TCLink, Intf
 from subprocess import call
 import csv
 
-with open('topology_data/try_5.csv', 'rb') as csvfile:
+with open('topology_data/connection_error_small.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',')
     for row in spamreader:
         print ', '.join(row)
 
 # def parse_file():
 line_list = []
-with open('topology_data/try_5.csv') as f:
+with open('topology_data/connection_error_small.csv') as f:
     for each_line in f:
         if each_line[0] == '#':
             print(each_line)
@@ -50,11 +50,11 @@ def runNet():
         switch_node_list.append(s)
         print("s"+i[0])
 #         step = 0
-        if(int(i[0]) >= bottom_start_id):
-            info( '*** Add hosts\n')
-            h = net.addHost("h"+i[0]+str(1), cls=Host, defaultRoute=None, ip='10.0.0.'+i[0])
-            host_node_list.append(h)
-            print("h"+i[0]+str(1))
+#        if(int(i[0]) >= bottom_start_id):
+        info( '*** Add hosts\n')
+        h = net.addHost("h"+i[0]+str(1), cls=Host, defaultRoute=None, ip='10.0.0.'+i[0])
+        host_node_list.append(h)
+        print("h"+i[0]+str(1))
     print('Length of switch_node_list', len(switch_node_list))
 #    print('Length of host_node_list', len(host_node_list))
 
