@@ -10,7 +10,7 @@ from mininet.link import TCLink, Intf
 from subprocess import call
 import csv
 
-with open('topology_data/try_5.csv', 'rb') as csvfile:
+with open('topology_data/connection_100_v2_fix.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',')
     for row in spamreader:
         print ', '.join(row)
@@ -52,7 +52,12 @@ def runNet():
 #         step = 0
         if(int(i[0]) >= bottom_start_id):
             info( '*** Add hosts\n')
-            h = net.addHost("h"+i[0]+str(1), cls=Host, defaultRoute=None, ip='10.0.0.'+i[0])
+            
+            
+            privateDirs = [ ( '/var/log', '/tmp/%(name)s/var/log' ),
+                           ( '/var/run', '/tmp/%(name)s/var/run' ),
+                           '/var/mn' ]
+            h = net.addHost("h"+i[0]+str(1), cls=Host, privateDirs=privateDirs, defaultRoute=None, ip='10.0.0.'+i[0])
             host_node_list.append(h)
             print("h"+i[0]+str(1))
     print('Length of switch_node_list', len(switch_node_list))
@@ -78,6 +83,9 @@ def runNet():
 
     info( '*** Starting network\n')
     net.build()
+    directories = [ directory[ 0 ] if isinstance( directory, tuple )
+                   else directory for directory in privateDirs ]
+    info( 'Private Directories:', directories, '\n' )
     info( '*** Starting controllers\n')
     for controller in net.controllers:
         controller.start()
