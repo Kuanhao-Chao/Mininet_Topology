@@ -1,0 +1,19 @@
+Forwarding table:
+1. intra table: {dest: next node id}
+For nongateway node, find which gateway is the closest-->set it as the default gateway
+
+2. inter table: {AS number: path}
+Add fake edge for gateways in the same AS
+Find the shortest path length of each gateway in the corrosponding AS-->corrosponding path
+
+gateway: 2 table, intra and inter
+nongateway: 1 table, intra. 
+
+LogictoSendPacket:
+1. If node[a]['AS number'] != node[c]['AS number'], send to the default gateway
+2. Once enter the gateway, according to the inter table, we will get a corrosponding path
+3. If the nth node and n+1 node in the path have same AS number, use the intra table
+   Else, directly send to node n+1
+
+Progress:
+Extract the edges of gateways and create a new graph to compute the InterTable
